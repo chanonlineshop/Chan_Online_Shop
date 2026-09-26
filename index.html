@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chan Online Shop | Official Store</title>
+    <meta name="description" content="Chan Online Shop e-commerce platform with secure payment gateway, product inventory management, and hotline 070 433 464." />
+    <meta property="og:title" content="Chan Online Shop | Official Store" />
+    <meta property="og:description" content="Chan Online Shop e-commerce platform with secure payment gateway, product inventory management, and hotline 070 433 464." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('chan_shop_theme_v3');
+          if (!savedTheme) {
+            var settings = localStorage.getItem('chan_shop_settings_v3');
+            if (settings) {
+              var parsed = JSON.parse(settings);
+              if (parsed && parsed.theme) savedTheme = parsed.theme;
+            }
+          }
+          var isDark = savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-[var(--bg-app)] text-[var(--text-primary)] font-sans antialiased selection:bg-amber-500 selection:text-white transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,10 @@
+{
+  "name": "Chan Online Shop",
+  "description": "Chan Online Shop e-commerce platform with secure payment gateway, product inventory management, and hotline 070 433 464.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

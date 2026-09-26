@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --theme-mode: light;
+
+  /* Surface & Background colors */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-muted: #e2e8f0;
+  --bg-input: #ffffff;
+  --bg-popover: #ffffff;
+  --bg-dropdown: #ffffff;
+
+  /* Typography & Foreground colors */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Borders & Dividers */
+  --border-color: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --border-card: #e2e8f0;
+  --border-input: #cbd5e1;
+
+  /* Brand Accents */
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --accent-subtle: #fef3c7;
+  --accent-foreground: #0f172a;
+
+  /* Header & Navigation */
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-border: #e2e8f0;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.dark, [data-theme="dark"] {
+  color-scheme: dark;
+  --theme-mode: dark;
+
+  /* Surface & Background colors */
+  --bg-app: #090d16;
+  --bg-surface: #0f172a;
+  --bg-card: #141e33;
+  --bg-subtle: #1e293b;
+  --bg-muted: #334155;
+  --bg-input: #0f172a;
+  --bg-popover: #141e33;
+  --bg-dropdown: #141e33;
+
+  /* Typography & Foreground colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-inverse: #0f172a;
+
+  /* Borders & Dividers */
+  --border-color: #1e293b;
+  --border-subtle: #192231;
+  --border-card: #222f46;
+  --border-input: #334155;
+
+  /* Brand Accents */
+  --accent: #f59e0b;
+  --accent-hover: #fbbf24;
+  --accent-subtle: rgba(245, 158, 11, 0.15);
+  --accent-foreground: #ffffff;
+
+  /* Header & Navigation */
+  --header-bg: rgba(15, 23, 42, 0.95);
+  --header-border: #1e293b;
+
+  /* Shadows */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+html {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Base dark mode overrides for standard Tailwind elements */
+.dark .bg-white {
+  background-color: var(--bg-surface) !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: var(--bg-app) !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: var(--bg-subtle) !important;
+}
+
+.dark .bg-slate-200 {
+  background-color: var(--bg-muted) !important;
+}
+
+.dark .text-slate-900 {
+  color: var(--text-primary) !important;
+}
+
+.dark .text-slate-800 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-700 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-slate-600 {
+  color: var(--text-muted) !important;
+}
+
+.dark .text-slate-500 {
+  color: var(--text-subtle) !important;
+}
+
+.dark .border-slate-200,
+.dark .border-slate-200\/80,
+.dark .border-slate-200\/90,
+.dark .border-slate-100 {
+  border-color: var(--border-color) !important;
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: var(--bg-subtle) !important;
+}
+
+.dark .hover\:bg-slate-100:hover {
+  background-color: #202b3f !important;
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark select,
+.dark textarea {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border-color: var(--border-input);
+}
+
+/* Custom scrollbars for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* =========================================================
+   THERMAL PRINTER FORMATTING & MEDIA PRINT RULES
+   Specifically tuned for continuous roll thermal receipt printers (80mm & 58mm)
+   ========================================================= */
+
+@media print {
+  /* Default page configuration for continuous roll thermal printers */
+  @page {
+    size: 80mm auto;
+    margin: 0mm;
+  }
+
+  body.thermal-print-active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 80mm !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body.thermal-print-active.thermal-width-58mm {
+    width: 58mm !important;
+  }
+
+  /* Isolate only the thermal receipt element during thermal print */
+  body.thermal-print-active * {
+    visibility: hidden !important;
+  }
+
+  body.thermal-print-active #thermal-receipt-printable,
+  body.thermal-print-active #thermal-receipt-printable * {
+    visibility: visible !important;
+  }
+
+  body.thermal-print-active #thermal-receipt-printable {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    width: 76mm !important;
+    max-width: 76mm !important;
+    padding: 2mm 3mm 16mm 3mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  body.thermal-print-active.thermal-width-58mm #thermal-receipt-printable {
+    width: 54mm !important;
+    max-width: 54mm !important;
+    padding: 2mm 2mm 14mm 2mm !important;
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Monochrome direct thermal overrides */
+  body.thermal-print-active .thermal-monochrome,
+  body.thermal-print-active .thermal-monochrome * {
+    color: #000000 !important;
+    background: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+}
+
